@@ -24,12 +24,17 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask groundLayer;
 
+    SpriteRenderer m_SpriteRenderer;
+
     // Use this for initialization
     void Start()
     {
         // Grab our components
         rb = GetComponent<Rigidbody2D>();
+
         col = GetComponent<Collider2D>();
+
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
 
         // get player size
         size = col.bounds.size;
@@ -107,5 +112,29 @@ public class PlayerController : MonoBehaviour
 
         return false;
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+       
+        if (other.CompareTag("RedOrb"))
+        {
+            m_SpriteRenderer.color = Color.red;
+            Destroy(other.gameObject);
+        }
+
+        else if (other.CompareTag("BlueOrb"))
+        {
+            m_SpriteRenderer.color = Color.blue;
+            Destroy(other.gameObject);
+        }
+
+        else if (other.CompareTag("GreenOrb"))
+        {
+            m_SpriteRenderer.color = Color.green;
+            Destroy(other.gameObject);
+        }
+
+    }
+
 }
 
