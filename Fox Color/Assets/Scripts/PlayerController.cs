@@ -31,6 +31,12 @@ public class PlayerController : MonoBehaviour
 
     SpriteRenderer m_SpriteRenderer;
 
+    public float damage = 10;
+
+    public LayerMask nottohit;
+
+    Transform firepoint;
+
     // Use this for initialization
     void Start()
     {
@@ -51,6 +57,12 @@ public class PlayerController : MonoBehaviour
         colorList.Add(Color.green);
 
         m_SpriteRenderer.color = colorList.current();
+
+        firepoint = transform.Find("FirePoint");
+        if (firepoint == null)
+        {
+            Debug.LogError("no firepoint");
+        }
 
     }
 
