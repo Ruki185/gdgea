@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public float damage = 10;
 
-    public LayerMask nottohit;
+    public LayerMask whattohit;
 
     Transform firepoint;
 
@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
         WalkHandler();
         JumpHandler();
         ColorHandler();
+        LifeHandler();
        
     }
     private void Update()
@@ -192,11 +193,14 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        Vector2 shootdirection = new Vector2(0, transform.position.y) + Vector2.right;
+        Vector2 shootdirection = Vector2.right;
         Vector2 firepointposition = new Vector2(firepoint.position.x, firepoint.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(firepointposition, shootdirection - firepointposition, 100, nottohit);
-        Debug.DrawLine(firepointposition, shootdirection);
-        print("shoot");
+        RaycastHit2D hit = Physics2D.Raycast(firepointposition, shootdirection, 100);
+        if (hit.collider != null)
+        {
+            Debug.DrawLine(firepointposition, hit.point, Color.red);
+            Debug.Log("We hit " + hit.collider.name + " and did " + damage + " damage.");
+        }
     }
 
     void LifeHandler()
@@ -212,6 +216,7 @@ public class PlayerController : MonoBehaviour
        if (other.gameObject.CompareTag("Enemy"))
         {
             lifecounter -= 1;
+            print(lifecounter);
         }
 
     }
