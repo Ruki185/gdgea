@@ -19,20 +19,39 @@ public class PlayerController : MonoBehaviour
     //flag to keep track of key pressing
     bool pressedJump = false;
 
+    bool pressedColorUp = false;
+    bool pressedColorDown = false;
+
     //size of the player
     Vector2 size;
 
     public LayerMask groundLayer;
+
+    private CircularList<Color> colorList = new CircularList<Color>();
+
+    SpriteRenderer m_SpriteRenderer;
 
     // Use this for initialization
     void Start()
     {
         // Grab our components
         rb = GetComponent<Rigidbody2D>();
+
         col = GetComponent<Collider2D>();
+
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
 
         // get player size
         size = col.bounds.size;
+
+
+        colorList.Add(Color.white);
+        colorList.Add(Color.blue);
+        colorList.Add(Color.red);
+        colorList.Add(Color.green);
+
+        m_SpriteRenderer.color = colorList.current();
+
     }
 
     // Update is called once per frame
@@ -40,6 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         WalkHandler();
         JumpHandler();
+        ColorHandler();
     }
 
     // Takes care of the walking logic
@@ -70,7 +90,7 @@ public class PlayerController : MonoBehaviour
         if (yAxis > 0)
         {
             bool isGrounded = CheckGrounded();
-            print(isGrounded);
+            
             //make sure we are not already jumping
             if (!pressedJump && isGrounded)
             {
@@ -106,6 +126,75 @@ public class PlayerController : MonoBehaviour
         }
 
         return false;
+    }
+
+    void ColorHandler()
+    {
+        float ColorUpAxis = Input.GetAxis("ColorSwitchUp");
+        float ColorDownAxis = Input.GetAxis("ColorSwitchDown");
+
+        if (ColorUpAxis > 0)
+        {
+            
+            if (!pressedColorUp)
+            {
+                pressedColorUp = true;
+                m_SpriteRenderer.color = colorList.next();
+               
+            }
+        }
+        else
+        {
+            pressedColorUp = false;
+        }
+        if (ColorDownAxis > 0)
+        {
+            if (!pressedColorDown)
+            {
+                pressedColorDown = true;
+                m_SpriteRenderer.color = colorList.prev();
+            }
+        }
+        else
+        {
+            pressedColorDown = false;
+        }
+
+
+
+
+
+    }
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+       
+
+    }
+
+}
+
+public class CircularList<T> : List<T>
+{
+    private int idx = 0;
+
+    public T next()
+    {
+        idx++;
+        return this[idx % this.Count];
+    }
+
+    public T prev()
+    {
+        idx--;
+        if (idx < 0) idx = this.Count - 1;
+        return this[idx % this.Count];
+    }
+
+    public T current()
+    {
+        return this[idx];
     }
 }
 
