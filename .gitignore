@@ -63,3 +63,11 @@ crashlytics-build.properties
 
 #Video
 **/*.mp4
+
+#Unity Caches&Local Config
+**/CurrentLayout.dwlt
+**/StateCache/
+**/ScriptAssemblies/
+**/assetDatabase3
+**/InspectorExpandedIItems.asset
+*.dwlt
