@@ -115,11 +115,6 @@ public class PlayerController : MonoBehaviour
             {
                 pressedJump = true; 
 
-                //jumping vector
-                Vector2 jumpVector = new Vector2(0, yAxis * jumpForce);
-
-                Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + jumpVector;
-                print("foo");
                 rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
             }
