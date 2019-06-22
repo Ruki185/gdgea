@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     //size of the player
     Vector2 size;
 
+    public GameObject orbprefab;
+
     public LayerMask groundLayer;
 
     private CircularList<Color> colorList = new CircularList<Color>();
@@ -32,8 +34,10 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer m_SpriteRenderer;
 
     public float damage = 10;
+    public float fallMultiplier = 28f;
+    public float lowJumpMultiplier = 2f;
 
-    public LayerMask nottohit;
+    public LayerMask whattohit;
 
     Transform firepoint;
 
@@ -75,12 +79,34 @@ public class PlayerController : MonoBehaviour
         WalkHandler();
         JumpHandler();
         ColorHandler();
-       
+        LifeHandler();
+        
     }
+
     private void Update()
     {
         FireHandler();
+
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity = Vector2.up * Physics2D.gravity * (fallMultiplier-1) * Time.deltaTime;
+            print(rb.velocity);
+            print(Time.deltaTime);
+        }
+        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            rb.velocity = Vector2.up * Physics2D.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 10)
+        {
+            this.lifecounter--;
+        }
+    }
+
     // Takes care of the walking logic
     void WalkHandler()
     {
@@ -88,13 +114,9 @@ public class PlayerController : MonoBehaviour
         float xAxis = Input.GetAxis("Horizontal");
         
         // Movement vector
-        Vector2 movement = new Vector2(xAxis * walkSpeed * Time.deltaTime, 0);
-
-        // Calculate the new position
-        Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + movement;
-
+        Vector2 movement = Vector2.right * xAxis * walkSpeed;
         // Move
-        rb.MovePosition(newPos);
+        this.transform.Translate(movement);
     }
 
     // takes care of the jumping logic
@@ -113,9 +135,8 @@ public class PlayerController : MonoBehaviour
             //make sure we are not already jumping
             if (!pressedJump && isGrounded)
             {
-                pressedJump = true; 
-
-                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                pressedJump = true;
+                rb.velocity = Vector2.up * jumpForce;
 
             }
         }
@@ -192,11 +213,9 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        Vector2 shootdirection = new Vector2(0, transform.position.y) + Vector2.right;
-        Vector2 firepointposition = new Vector2(firepoint.position.x, firepoint.position.y);
-        RaycastHit2D hit = Physics2D.Raycast(firepointposition, shootdirection - firepointposition, 100, nottohit);
-        Debug.DrawLine(firepointposition, shootdirection);
-        print("shoot");
+
+        GameObject orb = Instantiate(orbprefab, firepoint.position, firepoint.rotation);
+        orb.GetComponent<SpriteRenderer>().color = colorList.current();
     }
 
     void LifeHandler()
@@ -212,6 +231,7 @@ public class PlayerController : MonoBehaviour
        if (other.gameObject.CompareTag("Enemy"))
         {
             lifecounter -= 1;
+            print(lifecounter);
         }
 
     }
