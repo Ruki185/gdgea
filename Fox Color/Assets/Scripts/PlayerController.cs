@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 5;
 
     //jumping speed
-    public float jumpForce = 1;
+    public float jumpForce = 5;
 
     //Rigidbody component
     Rigidbody2D rb;
@@ -31,6 +31,14 @@ public class PlayerController : MonoBehaviour
 
     SpriteRenderer m_SpriteRenderer;
 
+    public float damage = 10;
+
+    public LayerMask nottohit;
+
+    Transform firepoint;
+
+    public int lifecounter;
+
     // Use this for initialization
     void Start()
     {
@@ -52,6 +60,13 @@ public class PlayerController : MonoBehaviour
 
         m_SpriteRenderer.color = colorList.current();
 
+        firepoint = transform.Find("FirePoint");
+        if (firepoint == null)
+        {
+            Debug.LogError("no firepoint");
+        }
+
+        lifecounter = 3;
     }
 
     // Update is called once per frame
@@ -60,8 +75,12 @@ public class PlayerController : MonoBehaviour
         WalkHandler();
         JumpHandler();
         ColorHandler();
+       
     }
-
+    private void Update()
+    {
+        FireHandler();
+    }
     // Takes care of the walking logic
     void WalkHandler()
     {
@@ -100,7 +119,8 @@ public class PlayerController : MonoBehaviour
                 Vector2 jumpVector = new Vector2(0, yAxis * jumpForce);
 
                 Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + jumpVector;
-                rb.MovePosition(newPos);
+                print("foo");
+                rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
 
             }
         }
@@ -166,10 +186,38 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    void FireHandler()
+    {
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
+    }
+
+    void Shoot()
+    {
+        Vector2 shootdirection = new Vector2(0, transform.position.y) + Vector2.right;
+        Vector2 firepointposition = new Vector2(firepoint.position.x, firepoint.position.y);
+        RaycastHit2D hit = Physics2D.Raycast(firepointposition, shootdirection - firepointposition, 100, nottohit);
+        Debug.DrawLine(firepointposition, shootdirection);
+        print("shoot");
+    }
+
+    void LifeHandler()
+    {
+        if (lifecounter <= 0)
+        {
+            print("Game Over");
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-       
+       if (other.gameObject.CompareTag("Enemy"))
+        {
+            lifecounter -= 1;
+        }
 
     }
 
