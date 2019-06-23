@@ -33,6 +33,7 @@ public class PauseBehaviour : MonoBehaviour
 
     void menu()
     {
+        print("Foo");
         SceneManager.LoadScene("MainMenu");
         this.onResume();
     }   
