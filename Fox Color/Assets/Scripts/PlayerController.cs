@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed = 5;
 
     //jumping speed
-    public float jumpForce = 1;
+    public float jumpForce = 5;
 
     //Rigidbody component
     Rigidbody2D rb;
@@ -19,12 +19,29 @@ public class PlayerController : MonoBehaviour
     //flag to keep track of key pressing
     bool pressedJump = false;
 
+    bool pressedColorUp = false;
+    bool pressedColorDown = false;
+
     //size of the player
     Vector2 size;
 
+    public GameObject orbprefab;
+
     public LayerMask groundLayer;
 
+    private CircularList<Color> colorList = new CircularList<Color>();
+
     SpriteRenderer m_SpriteRenderer;
+
+    public float damage = 10;
+    public float fallMultiplier = 28f;
+    public float lowJumpMultiplier = 2f;
+
+    public LayerMask whattohit;
+
+    Transform firepoint;
+
+    public int lifecounter;
 
     // Use this for initialization
     void Start()
@@ -38,6 +55,22 @@ public class PlayerController : MonoBehaviour
 
         // get player size
         size = col.bounds.size;
+
+
+        colorList.Add(Color.white);
+        colorList.Add(Color.blue);
+        colorList.Add(Color.red);
+        colorList.Add(Color.green);
+
+        m_SpriteRenderer.color = colorList.current();
+
+        firepoint = transform.Find("FirePoint");
+        if (firepoint == null)
+        {
+            Debug.LogError("no firepoint");
+        }
+
+        lifecounter = 3;
     }
 
     // Update is called once per frame
@@ -45,6 +78,33 @@ public class PlayerController : MonoBehaviour
     {
         WalkHandler();
         JumpHandler();
+        ColorHandler();
+        LifeHandler();
+        
+    }
+
+    private void Update()
+    {
+        FireHandler();
+
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity = Vector2.up * Physics2D.gravity * (fallMultiplier-1) * Time.deltaTime;
+            print(rb.velocity);
+            print(Time.deltaTime);
+        }
+        else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            rb.velocity = Vector2.up * Physics2D.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 10)
+        {
+            this.lifecounter--;
+        }
     }
 
     // Takes care of the walking logic
@@ -54,13 +114,9 @@ public class PlayerController : MonoBehaviour
         float xAxis = Input.GetAxis("Horizontal");
         
         // Movement vector
-        Vector2 movement = new Vector2(xAxis * walkSpeed * Time.deltaTime, 0);
-
-        // Calculate the new position
-        Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + movement;
-
+        Vector2 movement = Vector2.right * xAxis * walkSpeed;
         // Move
-        rb.MovePosition(newPos);
+        this.transform.Translate(movement);
     }
 
     // takes care of the jumping logic
@@ -75,17 +131,12 @@ public class PlayerController : MonoBehaviour
         if (yAxis > 0)
         {
             bool isGrounded = CheckGrounded();
-            print(isGrounded);
+            
             //make sure we are not already jumping
             if (!pressedJump && isGrounded)
             {
-                pressedJump = true; 
-
-                //jumping vector
-                Vector2 jumpVector = new Vector2(0, yAxis * jumpForce);
-
-                Vector2 newPos = new Vector2(transform.position.x, transform.position.y) + jumpVector;
-                rb.MovePosition(newPos);
+                pressedJump = true;
+                rb.velocity = Vector2.up * jumpForce;
 
             }
         }
@@ -113,28 +164,100 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
+    void ColorHandler()
+    {
+        float ColorUpAxis = Input.GetAxis("ColorSwitchUp");
+        float ColorDownAxis = Input.GetAxis("ColorSwitchDown");
+
+        if (ColorUpAxis > 0)
+        {
+            
+            if (!pressedColorUp)
+            {
+                pressedColorUp = true;
+                m_SpriteRenderer.color = colorList.next();
+               
+            }
+        }
+        else
+        {
+            pressedColorUp = false;
+        }
+        if (ColorDownAxis > 0)
+        {
+            if (!pressedColorDown)
+            {
+                pressedColorDown = true;
+                m_SpriteRenderer.color = colorList.prev();
+            }
+        }
+        else
+        {
+            pressedColorDown = false;
+        }
+
+
+
+
+
+    }
+
+    void FireHandler()
+    {
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
+    }
+
+    void Shoot()
+    {
+
+        GameObject orb = Instantiate(orbprefab, firepoint.position, firepoint.rotation);
+        orb.GetComponent<SpriteRenderer>().color = colorList.current();
+    }
+
+    void LifeHandler()
+    {
+        if (lifecounter <= 0)
+        {
+            print("Game Over");
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-       
-        if (other.CompareTag("RedOrb"))
+       if (other.gameObject.CompareTag("Enemy"))
         {
-            m_SpriteRenderer.color = Color.red;
-            Destroy(other.gameObject);
-        }
-
-        else if (other.CompareTag("BlueOrb"))
-        {
-            m_SpriteRenderer.color = Color.blue;
-            Destroy(other.gameObject);
-        }
-
-        else if (other.CompareTag("GreenOrb"))
-        {
-            m_SpriteRenderer.color = Color.green;
-            Destroy(other.gameObject);
+            lifecounter -= 1;
+            print(lifecounter);
         }
 
     }
 
+}
+
+public class CircularList<T> : List<T>
+{
+    private int idx = 0;
+
+    public T next()
+    {
+        idx++;
+        return this[idx % this.Count];
+    }
+
+    public T prev()
+    {
+        idx--;
+        if (idx < 0) idx = this.Count - 1;
+        return this[idx % this.Count];
+    }
+
+    public T current()
+    {
+        return this[idx];
+    }
 }
 

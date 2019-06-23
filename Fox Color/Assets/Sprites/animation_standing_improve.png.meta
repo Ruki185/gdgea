@@ -1,0 +1,568 @@
+fileFormatVersion: 2
+guid: 74e57bc33f784df4fb0fd492df2488b9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8321037675603102540
+    second: animation_standing_improve_0
+  - first:
+      213: 2668476280204029131
+    second: animation_standing_improve_1
+  - first:
+      213: 1350990225701534876
+    second: animation_standing_improve_2
+  - first:
+      213: 5706620889530193069
+    second: animation_standing_improve_3
+  - first:
+      213: 109959712353516245
+    second: animation_standing_improve_4
+  - first:
+      213: -4744680004120317727
+    second: animation_standing_improve_5
+  - first:
+      213: 5545115133789284234
+    second: animation_standing_improve_6
+  - first:
+      213: -6408637867502157237
+    second: animation_standing_improve_7
+  - first:
+      213: -2702083027410105117
+    second: animation_standing_improve_8
+  - first:
+      213: 8788024005483017903
+    second: animation_standing_improve_9
+  - first:
+      213: -2259647361419038873
+    second: animation_standing_improve_10
+  - first:
+      213: 3311163095339619661
+    second: animation_standing_improve_11
+  - first:
+      213: -1864975141533225780
+    second: animation_standing_improve_12
+  - first:
+      213: -8941406553842654219
+    second: animation_standing_improve_13
+  - first:
+      213: -3721122548487977189
+    second: animation_standing_improve_14
+  - first:
+      213: -307199422753381266
+    second: animation_standing_improve_15
+  - first:
+      213: -8843246052055028111
+    second: animation_standing_improve_16
+  - first:
+      213: -16960148054378476
+    second: animation_standing_improve_17
+  - first:
+      213: -2806741431371432021
+    second: animation_standing_improve_18
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: animation_standing_improve_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 366
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd634cacaf819c34eb5d1f53a7547851
+      internalID: 8321037675603102540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_1
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 0
+        width: 368
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62b9be4fe19a8dc479a8f04a9eb7b0d9
+      internalID: 2668476280204029131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_2
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 247
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ddff3c0417ffe848898789c94d4e40a
+      internalID: 1350990225701534876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_3
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 0
+        width: 341
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf454304c30241041beb60bb8c74f151
+      internalID: 5706620889530193069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_4
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 247
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fb96b6a6047c7e4d8857e43b57d71b4
+      internalID: 109959712353516245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_5
+      rect:
+        serializedVersion: 2
+        x: 1103
+        y: 0
+        width: 369
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26343cdcdf1b9f149aa96931391bb03c
+      internalID: -4744680004120317727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_6
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 247
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75f2fc564caa1cd4f968700db470b357
+      internalID: 5545115133789284234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_7
+      rect:
+        serializedVersion: 2
+        x: 1494
+        y: 0
+        width: 341
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e54aafe16c6cb409315242c255a212
+      internalID: -6408637867502157237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_8
+      rect:
+        serializedVersion: 2
+        x: 1848
+        y: 0
+        width: 359
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0836abaea8f1a214480b6844bfd20451
+      internalID: -2702083027410105117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_9
+      rect:
+        serializedVersion: 2
+        x: 2134
+        y: 247
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 888c94adcd0dd2d4795c7112f810ca81
+      internalID: 8788024005483017903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_10
+      rect:
+        serializedVersion: 2
+        x: 2225
+        y: 0
+        width: 352
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad086513c69489643b424d38a8c3da3f
+      internalID: -2259647361419038873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_11
+      rect:
+        serializedVersion: 2
+        x: 2597
+        y: 0
+        width: 352
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd8ef1471fd13ce40b6d9342824da67b
+      internalID: 3311163095339619661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_12
+      rect:
+        serializedVersion: 2
+        x: 2967
+        y: 0
+        width: 352
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaa9506a3781aa343bd14a23703a8835
+      internalID: -1864975141533225780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_13
+      rect:
+        serializedVersion: 2
+        x: 3332
+        y: 0
+        width: 359
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce7cd40be7cf64d408b2fc3884b9308a
+      internalID: -8941406553842654219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_14
+      rect:
+        serializedVersion: 2
+        x: 3618
+        y: 247
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02e9d6272d7dec84a96d31ad0f1fc561
+      internalID: -3721122548487977189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_15
+      rect:
+        serializedVersion: 2
+        x: 3722
+        y: 0
+        width: 339
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f86c4f1d28f838a40a6be0fa06d90741
+      internalID: -307199422753381266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_16
+      rect:
+        serializedVersion: 2
+        x: 3988
+        y: 247
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02facf304250bed4f8b6cea556629c9f
+      internalID: -8843246052055028111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_17
+      rect:
+        serializedVersion: 2
+        x: 4360
+        y: 245
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cf9f42d4c36bdc4682d0d5a57847055
+      internalID: -16960148054378476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_standing_improve_18
+      rect:
+        serializedVersion: 2
+        x: 4064
+        y: 3
+        width: 366
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 241b6607f1978c14495181105ec96598
+      internalID: -2806741431371432021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 7819edf681c6153488c404c1b59cd76c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
