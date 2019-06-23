@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     public float damage = 10;
     public float fallMultiplier = 28f;
     public float lowJumpMultiplier = 2f;
+    public GameObject ui;
 
     public LayerMask whattohit;
 
@@ -103,6 +104,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.layer == 10)
         {
+            ui.SendMessage("LifeUpdate", this.lifecounter);
             this.lifecounter--;
         }
     }
@@ -257,7 +259,7 @@ public class CircularList<T> : List<T>
 
     public T current()
     {
-        return this[idx];
+        return this[idx%this.Count];
     }
 }
 

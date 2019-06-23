@@ -23,4 +23,9 @@ public class OrbMovement : MonoBehaviour
         print("foo" + obj.name);
         obj.SendMessage("DamageHandler", this.transform.gameObject.GetComponent<SpriteRenderer>().color);
     }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(this.transform.gameObject);
+    }
 }
